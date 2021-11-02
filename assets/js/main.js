@@ -108,3 +108,112 @@ modalCloses.forEach((modalClose) => {
         });
     });
 });
+
+/* Deslizador tipo swiper
+En esta seccion agregamos un deslizador tomado de la pag Swiper, siguiendo las instrucciones planteadas
+con unas pequeñas correcciones propuias */
+
+let swiperPortfolio = new Swiper(".portfolio__container", {
+    cssMode: true,
+    loop : true,
+
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true
+    },
+  });
+
+/* Deslizador de testimonio*/
+
+let swiperTestimonial = new Swiper(".testimonial__container", {
+    loop : true,
+    grabCursor : true,
+    spaceBetween: 48,
+
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+      dynamicBullets: true
+    },
+    breakpoints:{
+        568:{
+            slidesPerView: 2,
+        }
+    }
+  });
+
+/* Scroll sections y links activos*/
+// Pasamos leyendo el id de la seccion en la que nos econtramos
+const sections = document.querySelectorAll('section[id]');
+// Creamos la funcion de activar por el scroll
+function scrollActive(){
+    // Definimos la variable de pagina actual
+    const scrollY = window.pageYOffset;
+    //Por las secciones antes consideradas hacemos un ciclo mientras nos encontremos visualizando x seccion de la seccion
+    sections.forEach(current => {
+        const sectionHeight = current.offsetHeight;
+        const sectionTop = current.offsetTop - 50;
+        sectionId = current.getAttribute('id');
+
+        if (scrollY > sectionTop && scrollY <= sectionTop+sectionHeight){
+            document.querySelector('.nav__menu a[href*=' + sectionId +']').classList.add('active-link');
+        }else{
+            document.querySelector('.nav__menu a[href*=' + sectionId +']').classList.remove('active-link');
+        }
+    })
+}
+
+window.addEventListener('scroll',scrollActive);
+
+/* Cambiar color de backgroud y encabezado*/
+
+function scrollHeader(){
+    const nav = document.getElementById('header');
+    //Cuando el deslizador es mas grande que la visualizacion por 200, agregamos el deslizador-encabezado como clase
+    if(this.scrollY >= 80) nav.classList.add('scroll-header'); else nav.classList.remove('scroll-header');
+}
+window.addEventListener('scroll', scrollHeader);
+
+/* Mostrar el deslizador superior*/
+
+function scrollUp1(){
+    const scrollUp = document.getElementById('scroll-up');
+    //Cuando la visualizacion de la pagina sea en un lugar diferentente a la parte superior de la misma
+    //modifica el selector de posicion del deslizador superior
+    if(this.scrollY >= 560) scrollUp.classList.add('show-scroll'); else scrollUp.classList.remove('show-scroll')
+}
+window.addEventListener('scroll',scrollUp1)
+
+// Modo noche
+
+const themeButton = document.getElementById('theme-button');
+const darkTheme = 'dark-theme';
+const iconTheme = 'uil-sun';
+
+//primero seleccionamos el topico(si el usuario selecciono la opcion)
+const selectedTheme = localStorage.getItem('selected-theme');
+const selectedIcon = localStorage.getItem('selected-icon');
+
+//obtenemos le modo de la interfaace, validando la clase de dark-theme
+const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light';
+const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'uli-moon' : 'uil-sun';
+
+if (selectedTheme){
+    //Si la validacion se completa
+    document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme);
+    themeButton.classList[selectedIcon === 'uli-moon' ? 'add' : 'remove'](iconTheme);
+};
+
+//Activamos y desactivamos el icono
+themeButton.addEventListener('click', () => {
+    // Agregamos o removemos el modo oscuro
+    document.body.classList.toggle(darkTheme);
+    themeButton.classList.toggle(iconTheme);
+    // Guardamos la opcion actual
+    localStorage.setItem('selected-theme', getCurrentTheme());
+    localStorage.setItem('selected-icon', getCurrentIcon())
+})
