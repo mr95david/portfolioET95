@@ -217,3 +217,18 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-theme', getCurrentTheme());
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
+
+// Cambio de color de la pagina
+
+const colores = [142, 214, 250, 35];
+const acColor = document.querySelector(':root');
+const changeColor = document.getElementById('theme-color-button');
+var cont = 0;
+changeColor.addEventListener('click', () => {
+    if(cont<colores.length-1){
+        cont=cont+1;
+    }else{
+        cont=0;
+    }
+    acColor.style.setProperty('--hue-color', colores[cont]);
+});
