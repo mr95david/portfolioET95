@@ -348,9 +348,10 @@ img {
     font-weight: var(--font-medium);
     margin-bottom: var(--mb-0-75);
 }
-
+/* quitar el hidden para mostrar */
 .home__description {
     margin-bottom: var(--mb-2);
+    visibility: hidden;
 }
 
 .home__scroll {
@@ -546,31 +547,31 @@ habilidades */
 /* Culmina la creacion de la barra */
 
 .skills__html{
-    width: 80%;
+    width: 75%;
 }
 
 .skills__css{
-    width: 70%;
+    width: 75%;
 }
 
 .skills__js{
-    width: 60%;
+    width: 50%;
 }
 
 .skills__bootstrap{
-    width: 40%;
+    width: 50%;
 }
 
 .skills__angular{
-    width: 40%;
+    width: 50%;
 }
 
 .skills__django{
-    width: 40%;
+    width: 50%;
 }
 
 .skills__python{
-    width: 80%;
+    width: 75%;
 }
 
 .skills__java{
@@ -578,7 +579,7 @@ habilidades */
 }
 
 .skills__php{
-    width: 40%;
+    width: 50%;
 }
 
 .skills__sql{
@@ -586,15 +587,15 @@ habilidades */
 }
 
 .skills__mongodb{
-    width: 30%;
+    width: 25%;
 }
 
 .skills__matlab{
-    width: 60%;
+    width: 75%;
 }
 
 .skills__anaconda{
-    width: 60%;
+    width: 75%;
 }
 
 .skills__close .skills__list{
@@ -879,6 +880,7 @@ habilidades */
 }
 
 /* Seccion de testimonios */
+
 
 .testimonial__data,
 .testimonial__header{

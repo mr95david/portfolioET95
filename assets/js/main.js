@@ -232,3 +232,4 @@ changeColor.addEventListener('click', () => {
     }
     acColor.style.setProperty('--hue-color', colores[cont]);
 });
+
