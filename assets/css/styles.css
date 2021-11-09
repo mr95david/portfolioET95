@@ -348,6 +348,7 @@ img {
     font-weight: var(--font-medium);
     margin-bottom: var(--mb-0-75);
 }
+
 /* quitar el hidden para mostrar */
 .home__description {
     margin-bottom: var(--mb-2);
